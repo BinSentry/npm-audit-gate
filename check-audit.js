@@ -22,6 +22,7 @@ const { spawnSync } = require('child_process');
 const fs = require('fs');
 
 const CONFIG_PATH = '.audit-allowlist.jsonc';
+const DOCS_URL = 'https://github.com/BinSentry/npm-audit-gate/blob/master/yarn.md';
 
 // Runs a yarn command with --json and parses the NDJSON output (one JSON object per line).
 // `yarn npm audit` exits 1 when it finds advisories, so callers list the exit codes
@@ -224,6 +225,7 @@ function run() {
 
   if (failures > 0) {
     console.error(`\nAudit failed: ${failures} vulnerable dependency path(s) not in ${CONFIG_PATH}.`);
+    console.error(`How to fix, allowlist, or reproduce this locally: ${DOCS_URL}`);
     process.exit(1);
   }
 
