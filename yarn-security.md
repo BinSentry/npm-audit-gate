@@ -1,4 +1,4 @@
-# Yarn 4 Guide 
+# Yarn 4 Security Guide 
 
 This document highlights some of the features of Yarn 4 that we use, with a particular emphasis on configuring and resolving vulnerabilities.
 
