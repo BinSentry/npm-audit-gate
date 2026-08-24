@@ -1,14 +1,14 @@
-# Yarn 4 Security Guide 
+# Yarn 4 Security Guide
 
 This document highlights some of the features of Yarn 4 that we use, with a particular emphasis on configuring and resolving vulnerabilities.
 
 ## New Guardrails
 
-These live in each repo's `.yarnrc.yml`. 
+These live in each repo's `.yarnrc.yml`.
 
 ### Minimum release age — `npmMinimalAgeGate: "1w"`
 
-Packages published less than a week ago are refused. This is intended to protect us from compromised releases, 
+Packages published less than a week ago are refused. This is intended to protect us from compromised releases,
 as most are caught and unpublished within days.
 
 If you need a newer package urgently, possibly to fix a critical vulnerability that's failing a build,
@@ -22,7 +22,7 @@ npmPreapprovedPackages:
 Note that bypassing this restriction is not the safe default. You are choosing between two risks:
 
 - accepting a package that hasn't been public long enough for a bad release to be caught
-- accepting the known vulnerability for a few days, and adding it to `.audit-allowlist.jsonc` so the build passes in the meantime 
+- accepting the known vulnerability for a few days, and adding it to `.audit-allowlist.jsonc` so the build passes in the meantime
 
 Generally speaking, if the vulnerability does not affect any code that we ship, waiting is usually preferable. If it does, updating sooner may be worth the exposure.
 This decision is left to the discretion of the developer; however, if you allowlist a package, once you've upgraded it,
@@ -57,7 +57,7 @@ If an advisory is released for a package we are using, at or above the severity 
 any CI pipeline that currently has an auditing step (currently only API)
 will flag this, and the build will fail. This is handled by `check-audit.js`.
 
-If you believe that this package is needed or that we are not vulnerable to the security vulnerability, 
+If you believe that this package is needed or that we are not vulnerable to the security vulnerability,
 you can create an exception for this advisory.
 
 Each exception is scoped to one advisory arriving via one exact dependency path, so an advisory
@@ -66,16 +66,16 @@ arrives through a runtime dependency.
 
 ### Running the audit script locally
 
-In order to run `check-audit.js` locally from another repo, run the following command from the repo you want to check:
+In order to run `check-audit.js` locally, run the following command from the repo you want to check:
 
 ```
 node /srv/binsentry/npm-audit-gate/check-audit.js
 ```
 
-This requires the `npm-audit-gate` repo to have been cloned, and `yarn install` to have been run 
+This requires the `npm-audit-gate` repo to have been cloned, and `yarn install` to have been run
 in the repo you're checking, since the audit reads the resolved dependency graph.
 
-`Exit 0` means a clean response.
+`Exit 0` means no unallowlisted advisories.
 
 ### Adding an allowlist entry
 
@@ -112,4 +112,4 @@ again. Nothing expires entries automatically, so without it, the comment is the 
 reasoning.
 
 An entry that matches nothing is reported as unused — either the advisory was fixed, the path
-changed, or it expired. Remove it. 
+changed, or it expired. Remove it.
