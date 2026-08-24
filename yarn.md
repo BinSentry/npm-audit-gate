@@ -72,8 +72,8 @@ In order to run `check-audit.js` locally from another repo, run the following co
 node /srv/binsentry/npm-audit-gate/check-audit.js
 ```
 
-This requires the `npm-audit-gate` repo to be cloned, and `yarn install` to have run in the repo
-you're checking, since the audit reads the resolved dependency graph.
+This requires the `npm-audit-gate` repo to have been cloned, and `yarn install` to have been run 
+in the repo you're checking, since the audit reads the resolved dependency graph.
 
 `Exit 0` means a clean response.
 
