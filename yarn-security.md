@@ -26,6 +26,7 @@ Note that bypassing this restriction is not the safe default. You are choosing b
 
 Generally speaking, if the vulnerability does not affect any code that we ship, waiting is usually preferable.
 If it does, updating sooner may be worth the exposure. This decision is left to the discretion of the developer.
+
 See [Adding an allowlist entry](#adding-an-allowlist-entry) for how to allowlist an advisory, as well as how to give it an expiry date,
 if you're only waiting out the age gate.
 
@@ -111,8 +112,6 @@ exceptions doesn't need one.
 An entry may also set `"expires": "2027-01-01"`, after which it stops matching and the build fails
 again. Set one whenever the exception is meant to be temporary (i.e. waiting out the minimum release
 age on a fix) so the entry can't outlive the reason for it.
-
-Nothing expires entries automatically, so without a date, the comment is the only record of the reasoning.
 
 An entry that matches nothing is reported as unused — either the advisory was fixed, the path
 changed, or it expired. Remove it.
