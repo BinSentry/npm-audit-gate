@@ -57,7 +57,7 @@ you can allow it by naming that package in `package.json`:
 
 If an advisory is released for a package we are using, at or above the severity level that repo gates on,
 any CI pipeline that currently has an auditing step (currently only API)
-will flag this, and the build will fail. This is handled by `check-audit.js`.
+will flag this, and the build will fail. This is handled by the [`@binsentry/npm-audit-gate`](https://github.com/BinSentry/npm-audit-gate) package.
 
 If you believe that this package is needed or that we are not vulnerable to the security vulnerability,
 you can create an exception for this advisory.
@@ -68,13 +68,11 @@ arrives through a runtime dependency.
 
 ### Running the audit script locally
 
-In order to run `check-audit.js` locally, run the following command from the repo you want to check:
+Run the gate from the root of the repo you want to check:
 
 ```
-node /srv/binsentry/npm-audit-gate/check-audit.js
+npx git+ssh://git@github.com/BinSentry/npm-audit-gate.git#master
 ```
-
-This requires the `npm-audit-gate` repo to have been cloned.
 
 `Exit 0` means no unallowlisted advisories.
 

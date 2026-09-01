@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* eslint-disable no-console */
 /**
  * Audit gate, replacing audit-ci (which does not support yarn 4).
