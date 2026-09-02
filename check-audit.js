@@ -23,7 +23,7 @@ const { spawnSync } = require('child_process');
 const fs = require('fs');
 
 const CONFIG_PATH = '.audit-allowlist.jsonc';
-const DOCS_URL = 'https://github.com/BinSentry/npm-audit-gate/blob/master/yarn-security.md';
+const DOCS_URL = 'https://www.npmjs.com/package/@binsentry/npm-audit-gate';
 
 // Runs a yarn command with --json and parses the NDJSON output (one JSON object per line).
 // `yarn npm audit` exits 1 when it finds advisories, so callers list the exit codes
