@@ -1,0 +1,11 @@
+{
+  "name": "@binsentry/npm-audit-gate",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "description": "CI gate that fails builds on npm vulnerabilities, with exceptions scoped by advisory and exact dependency path. Yarn 4 only.",
+  "author": "BinSentry",
+  "repository": { "type": "git", "url": "git+https://github.com/BinSentry/npm-audit-gate.git" },
+  "bin": { "npm-audit-gate": "check-audit.js" },
+  "files": ["check-audit.js"],
+  "publishConfig": { "access": "public" }
+}
